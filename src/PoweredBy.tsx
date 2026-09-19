@@ -22,6 +22,8 @@ import {
 export interface PoweredByProps {
   /** The site's vertical line. Omit to render the credit alone. */
   tagline?: string;
+  /** Tooltip on the link. Not the anchor text — that stays brand-only. */
+  title?: string;
   className?: string;
   linkClassName?: string;
   labelClassName?: string;
@@ -31,6 +33,7 @@ export interface PoweredByProps {
 
 export function PoweredBy({
   tagline,
+  title,
   className,
   linkClassName,
   labelClassName,
@@ -43,6 +46,7 @@ export function PoweredBy({
         href={PROSLOT_HREF}
         target={PROSLOT_TARGET}
         rel={PROSLOT_REL}
+        title={title}
         className={linkClassName}
       >
         <span className={labelClassName}>{PROSLOT_LABEL} </span>

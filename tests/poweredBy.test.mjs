@@ -135,3 +135,24 @@ describe('the pre-rendered string is safe to drop into a page', () => {
     );
   });
 });
+
+describe('title is a tooltip, never anchor text', () => {
+  const TITLE = 'ProSlot BOS — Custom Athletic Facility & Sports Academy Operating System';
+
+  test('html: title renders as an attribute and stays out of the anchor text', () => {
+    const out = renderPoweredByHtml({ tagline: TAGLINE, title: TITLE });
+    assert.match(out, /title="ProSlot BOS/);
+    assert.equal(anchorInnerText(out), 'POWERED BY PROSLOT BOS');
+  });
+
+  test('react: same', () => {
+    const out = reactHtml({ tagline: TAGLINE, title: TITLE });
+    assert.match(out, /title="ProSlot BOS/);
+    assert.equal(anchorInnerText(out), 'POWERED BY PROSLOT BOS');
+  });
+
+  test('html: the attribute is escaped and omitted entirely when unset', () => {
+    assert.match(renderPoweredByHtml({ title: '"><script>x</script>' }), /&quot;&gt;&lt;script&gt;/);
+    assert.doesNotMatch(renderPoweredByHtml(), /title=/);
+  });
+});

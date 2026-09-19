@@ -5,6 +5,8 @@ export interface PoweredByHtmlOptions {
      * nothing to omit it.
      */
     tagline?: string;
+    /** Tooltip on the link. Not the anchor text — that stays brand-only. */
+    title?: string;
     /** Inline style for the wrapper, since pre-rendered pages carry no stylesheet. */
     wrapperStyle?: string;
     /** Inline style for the anchor. */

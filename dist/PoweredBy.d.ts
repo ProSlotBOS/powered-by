@@ -14,10 +14,12 @@ import React from 'react';
 export interface PoweredByProps {
     /** The site's vertical line. Omit to render the credit alone. */
     tagline?: string;
+    /** Tooltip on the link. Not the anchor text — that stays brand-only. */
+    title?: string;
     className?: string;
     linkClassName?: string;
     labelClassName?: string;
     nameClassName?: string;
     taglineClassName?: string;
 }
-export declare function PoweredBy({ tagline, className, linkClassName, labelClassName, nameClassName, taglineClassName, }: PoweredByProps): React.JSX.Element;
+export declare function PoweredBy({ tagline, title, className, linkClassName, labelClassName, nameClassName, taglineClassName, }: PoweredByProps): React.JSX.Element;

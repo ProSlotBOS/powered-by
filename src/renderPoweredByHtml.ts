@@ -37,6 +37,8 @@ export interface PoweredByHtmlOptions {
    * nothing to omit it.
    */
   tagline?: string;
+  /** Tooltip on the link. Not the anchor text — that stays brand-only. */
+  title?: string;
   /** Inline style for the wrapper, since pre-rendered pages carry no stylesheet. */
   wrapperStyle?: string;
   /** Inline style for the anchor. */
@@ -59,6 +61,7 @@ const DEFAULT_TAGLINE_STYLE =
 export function renderPoweredByHtml(options: PoweredByHtmlOptions = {}): string {
   const {
     tagline,
+    title,
     wrapperStyle = DEFAULT_WRAPPER_STYLE,
     linkStyle = DEFAULT_LINK_STYLE,
     nameStyle,
@@ -69,7 +72,9 @@ export function renderPoweredByHtml(options: PoweredByHtmlOptions = {}): string 
   // pre-render scripts drop this straight into a template literal with no
   // escaping pass of their own, and a bare & in an attribute is invalid HTML.
   const anchor =
-    `<a href="${escapeHtml(PROSLOT_HREF)}" target="${PROSLOT_TARGET}" rel="${PROSLOT_REL}" style="${linkStyle}">` +
+    `<a href="${escapeHtml(PROSLOT_HREF)}" target="${PROSLOT_TARGET}" rel="${PROSLOT_REL}"` +
+    (title ? ` title="${escapeHtml(title)}"` : '') +
+    ` style="${linkStyle}">` +
     `${PROSLOT_LABEL} <strong${nameStyle ? ` style="${nameStyle}"` : ''}>${PROSLOT_NAME}</strong>` +
     `</a>`;
 
