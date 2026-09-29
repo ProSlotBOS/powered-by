@@ -8,4 +8,7 @@ export {
   PROSLOT_TARGET,
   PROSLOT_LABEL,
   PROSLOT_NAME,
+  PROSLOT_SECTORS,
+  resolveTagline,
 } from './constants.js';
+export type { ProSlotSector } from './constants.js';

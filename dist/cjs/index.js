@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PROSLOT_NAME = exports.PROSLOT_LABEL = exports.PROSLOT_TARGET = exports.PROSLOT_REL = exports.PROSLOT_HREF = exports.renderPoweredByHtml = exports.PoweredBy = void 0;
+exports.resolveTagline = exports.PROSLOT_SECTORS = exports.PROSLOT_NAME = exports.PROSLOT_LABEL = exports.PROSLOT_TARGET = exports.PROSLOT_REL = exports.PROSLOT_HREF = exports.renderPoweredByHtml = exports.PoweredBy = void 0;
 var PoweredBy_js_1 = require("./PoweredBy.js");
 Object.defineProperty(exports, "PoweredBy", { enumerable: true, get: function () { return PoweredBy_js_1.PoweredBy; } });
 var renderPoweredByHtml_js_1 = require("./renderPoweredByHtml.js");
@@ -11,3 +11,5 @@ Object.defineProperty(exports, "PROSLOT_REL", { enumerable: true, get: function 
 Object.defineProperty(exports, "PROSLOT_TARGET", { enumerable: true, get: function () { return constants_js_1.PROSLOT_TARGET; } });
 Object.defineProperty(exports, "PROSLOT_LABEL", { enumerable: true, get: function () { return constants_js_1.PROSLOT_LABEL; } });
 Object.defineProperty(exports, "PROSLOT_NAME", { enumerable: true, get: function () { return constants_js_1.PROSLOT_NAME; } });
+Object.defineProperty(exports, "PROSLOT_SECTORS", { enumerable: true, get: function () { return constants_js_1.PROSLOT_SECTORS; } });
+Object.defineProperty(exports, "resolveTagline", { enumerable: true, get: function () { return constants_js_1.resolveTagline; } });

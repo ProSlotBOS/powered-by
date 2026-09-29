@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ProSlotSector } from './constants.js';
 /**
  * The "Powered by ProSlot BOS" credit, as rendered in a live page.
  *
@@ -12,7 +13,9 @@ import React from 'react';
  * constants.ts for why that placement is load-bearing rather than cosmetic.
  */
 export interface PoweredByProps {
-    /** The site's vertical line. Omit to render the credit alone. */
+    /** The site's sector; renders the standard line from PROSLOT_SECTORS. Prefer this. */
+    sector?: ProSlotSector;
+    /** A bespoke vertical line; wins over `sector`. Omit both to render the credit alone. */
     tagline?: string;
     /** Tooltip on the link. Not the anchor text — that stays brand-only. */
     title?: string;
@@ -22,4 +25,4 @@ export interface PoweredByProps {
     nameClassName?: string;
     taglineClassName?: string;
 }
-export declare function PoweredBy({ tagline, title, className, linkClassName, labelClassName, nameClassName, taglineClassName, }: PoweredByProps): React.JSX.Element;
+export declare function PoweredBy({ sector, tagline, title, className, linkClassName, labelClassName, nameClassName, taglineClassName, }: PoweredByProps): React.JSX.Element;

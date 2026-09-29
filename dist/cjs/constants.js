@@ -6,7 +6,7 @@
  * copies did.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PROSLOT_NAME = exports.PROSLOT_LABEL = exports.PROSLOT_TARGET = exports.PROSLOT_REL = exports.PROSLOT_HREF = void 0;
+exports.resolveTagline = exports.PROSLOT_SECTORS = exports.PROSLOT_NAME = exports.PROSLOT_LABEL = exports.PROSLOT_TARGET = exports.PROSLOT_REL = exports.PROSLOT_HREF = void 0;
 /** Where the credit points, already carrying its attribution tag. */
 exports.PROSLOT_HREF = 'https://www.proslotbos.com/?utm_source=client-footer&utm_medium=referral&utm_campaign=powered_by';
 /**
@@ -36,3 +36,27 @@ exports.PROSLOT_TARGET = '_blank';
  */
 exports.PROSLOT_LABEL = 'POWERED BY';
 exports.PROSLOT_NAME = 'PROSLOT BOS';
+/**
+ * The standard sector lines — the vertical tagline each site shows beneath the
+ * credit. Sites name their sector instead of typing the wording, so every
+ * league shows the same line, every facility the same line, and so on; the
+ * league line alone had been hand-copied into eight repositories. A site with
+ * a genuinely bespoke line can still pass `tagline`, which wins over `sector`.
+ *
+ * Wording is kept exactly as it already appears on the live sites, so a site
+ * switching from `tagline` to `sector` changes nothing a visitor or crawler
+ * sees. Add a sector here when ProSlot enters a new one.
+ */
+exports.PROSLOT_SECTORS = {
+    league: 'Custom Sports League, Tournament & Schedule Builder Operating System',
+    facility: 'Custom Athletic Facility & Sports Academy Operating System',
+    training: 'Custom Baseball Training & Athlete Management Software',
+    club: 'Custom Youth Baseball Club & Team Management Operating System',
+    apparel: 'Custom Apparel, Uniform & Team Store Operating System',
+    print: 'Custom Print Shop, Online Design Studio & Merch Operating System',
+    advisory: 'Custom Admissions Consulting, Client Portal & Advisory Operating System',
+    school: 'Custom Private School, Admissions & Digital Campus Operating System',
+};
+/** The line a credit shows: an explicit tagline wins, else the sector's line. */
+const resolveTagline = (tagline, sector) => tagline || (sector ? exports.PROSLOT_SECTORS[sector] : undefined);
+exports.resolveTagline = resolveTagline;

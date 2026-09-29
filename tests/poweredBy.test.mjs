@@ -156,3 +156,34 @@ describe('title is a tooltip, never anchor text', () => {
     assert.doesNotMatch(renderPoweredByHtml(), /title=/);
   });
 });
+
+describe('standard sector lines', () => {
+  test('every sector renders its standard line in both outputs, outside the link', async () => {
+    const { PROSLOT_SECTORS } = await import('../dist/constants.js');
+    for (const [sector, line] of Object.entries(PROSLOT_SECTORS)) {
+      const r = reactHtml({ sector });
+      const h = renderPoweredByHtml({ sector });
+      assert.ok(r.includes(line.replace(/&/g, '&amp;')), `react missing ${sector}`);
+      assert.ok(h.includes(line.replace(/&/g, '&amp;')), `html missing ${sector}`);
+      assert.equal(anchorInnerText(r), 'POWERED BY PROSLOT BOS');
+      assert.equal(anchorInnerText(h), 'POWERED BY PROSLOT BOS');
+    }
+  });
+
+  test('the school sector exists with its line', async () => {
+    const { PROSLOT_SECTORS } = await import('../dist/constants.js');
+    assert.equal(PROSLOT_SECTORS.school, 'Custom Private School, Admissions & Digital Campus Operating System');
+  });
+
+  test('an explicit tagline wins over the sector', () => {
+    const html = renderPoweredByHtml({ sector: 'school', tagline: 'Bespoke line' });
+    assert.ok(html.includes('Bespoke line'));
+    assert.ok(!html.includes('Private School'));
+  });
+
+  test('sector wording matches the lines already live on the sites', async () => {
+    const { PROSLOT_SECTORS } = await import('../dist/constants.js');
+    assert.equal(PROSLOT_SECTORS.league, 'Custom Sports League, Tournament & Schedule Builder Operating System');
+    assert.equal(PROSLOT_SECTORS.facility, 'Custom Athletic Facility & Sports Academy Operating System');
+  });
+});

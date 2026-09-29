@@ -4,7 +4,9 @@ import {
   PROSLOT_NAME,
   PROSLOT_REL,
   PROSLOT_TARGET,
+  resolveTagline,
 } from './constants.js';
+import type { ProSlotSector } from './constants.js';
 
 /**
  * The credit as an HTML string, for the build-time pre-render scripts.
@@ -31,6 +33,8 @@ const escapeHtml = (value: string): string =>
     .replace(/'/g, '&#39;');
 
 export interface PoweredByHtmlOptions {
+  /** The site's sector; renders the standard line from PROSLOT_SECTORS. Prefer this. */
+  sector?: ProSlotSector;
   /**
    * The site's vertical line, e.g. "Custom Athletic Facility & Sports Academy
    * Operating System". Rendered beneath the link and outside the anchor. Pass
@@ -60,13 +64,15 @@ const DEFAULT_TAGLINE_STYLE =
 
 export function renderPoweredByHtml(options: PoweredByHtmlOptions = {}): string {
   const {
-    tagline,
+    sector,
+    tagline: explicitTagline,
     title,
     wrapperStyle = DEFAULT_WRAPPER_STYLE,
     linkStyle = DEFAULT_LINK_STYLE,
     nameStyle,
     taglineStyle = DEFAULT_TAGLINE_STYLE,
   } = options;
+  const tagline = resolveTagline(explicitTagline, sector);
 
   // The href is entity-encoded here rather than by the caller: several of the
   // pre-render scripts drop this straight into a template literal with no

@@ -33,3 +33,27 @@ export declare const PROSLOT_TARGET = "_blank";
  */
 export declare const PROSLOT_LABEL = "POWERED BY";
 export declare const PROSLOT_NAME = "PROSLOT BOS";
+/**
+ * The standard sector lines — the vertical tagline each site shows beneath the
+ * credit. Sites name their sector instead of typing the wording, so every
+ * league shows the same line, every facility the same line, and so on; the
+ * league line alone had been hand-copied into eight repositories. A site with
+ * a genuinely bespoke line can still pass `tagline`, which wins over `sector`.
+ *
+ * Wording is kept exactly as it already appears on the live sites, so a site
+ * switching from `tagline` to `sector` changes nothing a visitor or crawler
+ * sees. Add a sector here when ProSlot enters a new one.
+ */
+export declare const PROSLOT_SECTORS: {
+    readonly league: "Custom Sports League, Tournament & Schedule Builder Operating System";
+    readonly facility: "Custom Athletic Facility & Sports Academy Operating System";
+    readonly training: "Custom Baseball Training & Athlete Management Software";
+    readonly club: "Custom Youth Baseball Club & Team Management Operating System";
+    readonly apparel: "Custom Apparel, Uniform & Team Store Operating System";
+    readonly print: "Custom Print Shop, Online Design Studio & Merch Operating System";
+    readonly advisory: "Custom Admissions Consulting, Client Portal & Advisory Operating System";
+    readonly school: "Custom Private School, Admissions & Digital Campus Operating System";
+};
+export type ProSlotSector = keyof typeof PROSLOT_SECTORS;
+/** The line a credit shows: an explicit tagline wins, else the sector's line. */
+export declare const resolveTagline: (tagline?: string, sector?: ProSlotSector) => string | undefined;

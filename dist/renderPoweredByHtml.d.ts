@@ -1,4 +1,7 @@
+import type { ProSlotSector } from './constants.js';
 export interface PoweredByHtmlOptions {
+    /** The site's sector; renders the standard line from PROSLOT_SECTORS. Prefer this. */
+    sector?: ProSlotSector;
     /**
      * The site's vertical line, e.g. "Custom Athletic Facility & Sports Academy
      * Operating System". Rendered beneath the link and outside the anchor. Pass

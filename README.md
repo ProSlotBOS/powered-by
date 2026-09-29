@@ -24,6 +24,32 @@ Pinned to a commit, the same way the other kits are consumed:
 npm install github:ProSlotBOS/powered-by#<sha>
 ```
 
+## Sector lines — name your sector, don't type the tagline
+
+The line under the credit is standard per sector and lives in the kit
+(`PROSLOT_SECTORS`). Pass `sector` instead of `tagline`:
+
+```tsx
+<PoweredBy sector="school" … />
+renderPoweredByHtml({ sector: 'school', … })
+```
+
+| `sector` | Line |
+|---|---|
+| `league` | Custom Sports League, Tournament & Schedule Builder Operating System |
+| `facility` | Custom Athletic Facility & Sports Academy Operating System |
+| `training` | Custom Baseball Training & Athlete Management Software |
+| `club` | Custom Youth Baseball Club & Team Management Operating System |
+| `apparel` | Custom Apparel, Uniform & Team Store Operating System |
+| `print` | Custom Print Shop, Online Design Studio & Merch Operating System |
+| `advisory` | Custom Admissions Consulting, Client Portal & Advisory Operating System |
+| `school` | Custom Private School, Admissions & Digital Campus Operating System |
+
+The wording matches what the sites already show, so switching a site from
+`tagline` to `sector` changes nothing on the page. `tagline` still works and
+wins over `sector`, for a site whose line is genuinely bespoke. A new sector is
+added here, not in a site.
+
 ## Use — in a React footer
 
 Styling belongs to the site. Every class name is a prop and every one defaults

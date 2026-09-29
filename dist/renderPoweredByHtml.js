@@ -1,4 +1,4 @@
-import { PROSLOT_HREF, PROSLOT_LABEL, PROSLOT_NAME, PROSLOT_REL, PROSLOT_TARGET, } from './constants.js';
+import { PROSLOT_HREF, PROSLOT_LABEL, PROSLOT_NAME, PROSLOT_REL, PROSLOT_TARGET, resolveTagline, } from './constants.js';
 /**
  * The credit as an HTML string, for the build-time pre-render scripts.
  *
@@ -24,7 +24,8 @@ const DEFAULT_WRAPPER_STYLE = 'margin-top:12px;';
 const DEFAULT_LINK_STYLE = 'color:#94a3b8;text-decoration:none;';
 const DEFAULT_TAGLINE_STYLE = 'font-size:11px;color:#64748b;letter-spacing:0.05em;margin-top:2px;';
 export function renderPoweredByHtml(options = {}) {
-    const { tagline, title, wrapperStyle = DEFAULT_WRAPPER_STYLE, linkStyle = DEFAULT_LINK_STYLE, nameStyle, taglineStyle = DEFAULT_TAGLINE_STYLE, } = options;
+    const { sector, tagline: explicitTagline, title, wrapperStyle = DEFAULT_WRAPPER_STYLE, linkStyle = DEFAULT_LINK_STYLE, nameStyle, taglineStyle = DEFAULT_TAGLINE_STYLE, } = options;
+    const tagline = resolveTagline(explicitTagline, sector);
     // The href is entity-encoded here rather than by the caller: several of the
     // pre-render scripts drop this straight into a template literal with no
     // escaping pass of their own, and a bare & in an attribute is invalid HTML.

@@ -5,7 +5,9 @@ import {
   PROSLOT_NAME,
   PROSLOT_REL,
   PROSLOT_TARGET,
+  resolveTagline,
 } from './constants.js';
+import type { ProSlotSector } from './constants.js';
 
 /**
  * The "Powered by ProSlot BOS" credit, as rendered in a live page.
@@ -20,7 +22,9 @@ import {
  * constants.ts for why that placement is load-bearing rather than cosmetic.
  */
 export interface PoweredByProps {
-  /** The site's vertical line. Omit to render the credit alone. */
+  /** The site's sector; renders the standard line from PROSLOT_SECTORS. Prefer this. */
+  sector?: ProSlotSector;
+  /** A bespoke vertical line; wins over `sector`. Omit both to render the credit alone. */
   tagline?: string;
   /** Tooltip on the link. Not the anchor text — that stays brand-only. */
   title?: string;
@@ -32,6 +36,7 @@ export interface PoweredByProps {
 }
 
 export function PoweredBy({
+  sector,
   tagline,
   title,
   className,
@@ -40,6 +45,7 @@ export function PoweredBy({
   nameClassName,
   taglineClassName,
 }: PoweredByProps) {
+  const line = resolveTagline(tagline, sector);
   return (
     <div className={className}>
       <a
@@ -52,7 +58,7 @@ export function PoweredBy({
         <span className={labelClassName}>{PROSLOT_LABEL} </span>
         <strong className={nameClassName}>{PROSLOT_NAME}</strong>
       </a>
-      {tagline ? <div className={taglineClassName}>{tagline}</div> : null}
+      {line ? <div className={taglineClassName}>{line}</div> : null}
     </div>
   );
 }
