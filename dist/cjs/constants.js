@@ -56,6 +56,8 @@ exports.PROSLOT_SECTORS = {
     print: 'Custom Print Shop, Online Design Studio & Merch Operating System',
     advisory: 'Custom Admissions Consulting, Client Portal & Advisory Operating System',
     school: 'Custom Private School, Admissions & Digital Campus Operating System',
+    // A Montessori program that is not a school (Kingdom Montessori, 2026-09-30).
+    montessori: 'Custom Montessori Program, Admissions & Digital Campus Operating System',
 };
 /** The line a credit shows: an explicit tagline wins, else the sector's line. */
 const resolveTagline = (tagline, sector) => tagline || (sector ? exports.PROSLOT_SECTORS[sector] : undefined);

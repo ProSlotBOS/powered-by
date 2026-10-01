@@ -170,6 +170,11 @@ describe('standard sector lines', () => {
     }
   });
 
+  test('the montessori sector exists with its line', async () => {
+    const { PROSLOT_SECTORS } = await import('../dist/index.js');
+    assert.equal(PROSLOT_SECTORS.montessori, 'Custom Montessori Program, Admissions & Digital Campus Operating System');
+  });
+
   test('the school sector exists with its line', async () => {
     const { PROSLOT_SECTORS } = await import('../dist/constants.js');
     assert.equal(PROSLOT_SECTORS.school, 'Custom Private School, Admissions & Digital Campus Operating System');

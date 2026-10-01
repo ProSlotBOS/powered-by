@@ -53,6 +53,7 @@ export declare const PROSLOT_SECTORS: {
     readonly print: "Custom Print Shop, Online Design Studio & Merch Operating System";
     readonly advisory: "Custom Admissions Consulting, Client Portal & Advisory Operating System";
     readonly school: "Custom Private School, Admissions & Digital Campus Operating System";
+    readonly montessori: "Custom Montessori Program, Admissions & Digital Campus Operating System";
 };
 export type ProSlotSector = keyof typeof PROSLOT_SECTORS;
 /** The line a credit shows: an explicit tagline wins, else the sector's line. */

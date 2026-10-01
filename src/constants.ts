@@ -59,6 +59,8 @@ export const PROSLOT_SECTORS = {
   print: 'Custom Print Shop, Online Design Studio & Merch Operating System',
   advisory: 'Custom Admissions Consulting, Client Portal & Advisory Operating System',
   school: 'Custom Private School, Admissions & Digital Campus Operating System',
+  // A Montessori program that is not a school (Kingdom Montessori, 2026-09-30).
+  montessori: 'Custom Montessori Program, Admissions & Digital Campus Operating System',
 } as const;
 
 export type ProSlotSector = keyof typeof PROSLOT_SECTORS;
