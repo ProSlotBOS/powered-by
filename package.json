@@ -1,6 +1,6 @@
 {
   "name": "@proslotbosllc/powered-by",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "The \"Powered by ProSlot BOS\" footer credit, as one component and one HTML-string renderer, so the live page and the pre-rendered markup can never disagree.",
   "type": "module",
   "main": "./dist/index.js",
