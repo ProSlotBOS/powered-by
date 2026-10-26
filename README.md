@@ -108,3 +108,16 @@ is ever made followed.
 
 Each of these is pinned by a test, including one asserting the two renderers
 produce the same anchor text, rel and destination.
+
+## Per-page HTML for search (`/static-routes`, 1.1.0)
+
+A build-time helper for single-page satellites: after `vite build`, `writeRouteHtml` writes
+`dist/<route>/index.html` for each public page with that page's own `<title>`, description, canonical and
+`og:`/`twitter:` url, and gives the homepage its canonical. Without it every path serves the homepage's head, which
+Search Console reports as "Duplicate without user-selected canonical". Node only; pair it with
+`"trailingSlash": false` in `firebase.json`.
+
+```js
+import { writeRouteHtml } from '@proslotbosllc/powered-by/static-routes';
+writeRouteHtml({ distDir: 'dist', siteUrl: 'https://www.example.com', routes: { '/store': { title: 'Shop | Example' } } });
+```

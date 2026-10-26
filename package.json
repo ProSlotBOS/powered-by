@@ -1,6 +1,6 @@
 {
   "name": "@proslotbosllc/powered-by",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The \"Powered by ProSlot BOS\" footer credit, as one component and one HTML-string renderer, so the live page and the pre-rendered markup can never disagree.",
   "type": "module",
   "main": "./dist/index.js",
@@ -23,6 +23,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
+    "@types/node": "^22.20.5",
     "@types/react": "^19.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -34,6 +35,12 @@
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.js",
       "default": "./dist/index.js"
+    },
+    "./static-routes": {
+      "types": "./dist/staticRoutes.d.ts",
+      "import": "./dist/staticRoutes.js",
+      "require": "./dist/cjs/staticRoutes.js",
+      "default": "./dist/staticRoutes.js"
     },
     "./package.json": "./package.json"
   }
